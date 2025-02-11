@@ -1,0 +1,36 @@
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+li:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#global-leaderboard, #local-leaderboard {
+    list-style-type: none;
+    padding: 0;
+}
+
+#global-leaderboard li, #local-leaderboard li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+#global-leaderboard li:nth-child(even), #local-leaderboard li:nth-child(even) {
+    background-color: #f9f9f9;
+}

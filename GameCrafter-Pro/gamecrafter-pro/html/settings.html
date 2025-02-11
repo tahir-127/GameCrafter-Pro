@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="stylesheet" href="../css/settings.css">
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+    <script src="../js/settings.js" defer></script>
+    <style>
+        .popup-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .popup-button:hover {
+            background-color: #0056b3;
+            transform: scale(1.1);
+        }
+
+        .popup-content {
+            display: none;
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            z-index: 1000;
+            width: 300px;
+            max-height: 400px;
+            overflow-y: auto;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .popup-content.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .popup-content.hide {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .popup-content label,
+        .popup-content select,
+        .popup-content input,
+        .popup-content button {
+            display: block;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        .popup-content button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .popup-content button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="fade-in">Settings</h1>
+    <button onclick="toggleTheme()" class="bounce">Toggle Theme</button>
+    <select onchange="changeLanguage(this.value)" class="pulse">
+        <option value="en">English</option>
+        <option value="es">Spanish</option>
+        <option value="fr">French</option>
+        <option value="de">German</option>
+        <option value="zh">Chinese</option>
+        <option value="ja">Japanese</option>
+        <option value="ru">Russian</option>
+        <option value="ur">Urdu</option>
+        <option value="hi">Hindi</option>
+        <!-- Add more languages as needed -->
+    </select>
+    <label for="real-time-preview">Enable Real-Time Preview:</label>
+    <input type="checkbox" id="real-time-preview" onchange="toggleRealTimePreview(this.checked)">
+    <label for="snap-to-grid">Enable Snap-to-Grid:</label>
+    <input type="checkbox" id="snap-to-grid" onchange="toggleSnapToGrid(this.checked)">
+    <label for="two-factor-auth">Enable Two-Factor Authentication:</label>
+    <input type="checkbox" id="two-factor-auth" onchange="toggleTwoFactorAuth(this.checked)">
+    <label for="ddos-protection">Enable DDoS Protection:</label>
+    <input type="checkbox" id="ddos-protection" onchange="toggleDdosProtection(this.checked)">
+    <label for="auto-update">Enable Auto-Update for Published Games:</label>
+    <input type="checkbox" id="auto-update" onchange="toggleAutoUpdate(this.checked)">
+    <label for="monetization">Enable Game Monetization:</label>
+    <input type="checkbox" id="monetization" onchange="toggleMonetization(this.checked)">
+    <button onclick="addLayer()" class="rotate">Add Layer</button>
+    <button onclick="removeLayer()" class="rotate">Remove Layer</button>
+    <button onclick="loginWithGoogle()">Login with Google</button>
+    <button onclick="loginWithFacebook()">Login with Facebook</button>
+    <button onclick="loginWithGitHub()">Login with GitHub</button>
+    <button onclick="startTutorial()">Start Tutorial</button>
+    <button onclick="generateAIGraphics('background')">Generate AI Background</button>
+    <button onclick="generateAIGraphics('sprite')">Generate AI Sprite</button>
+    <label for="feedback">Submit Feedback:</label>
+    <textarea id="feedback" rows="4" cols="50"></textarea>
+    <button onclick="submitFeedback({ text: document.getElementById('feedback').value })">Submit</button>
+    <button class="popup-button" onclick="togglePopup()">☰</button>
+    <div class="popup-content" id="popup-content">
+        <label for="language-select">Language:</label>
+        <select id="language-select" onchange="changeLanguage(this.value)">
+            <option value="en">English</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+            <option value="de">German</option>
+            <option value="zh">Chinese</option>
+            <option value="ja">Japanese</option>
+            <option value="ru">Russian</option>
+            <option value="ur">Urdu</option>
+            <option value="hi">Hindi</option>
+            <!-- Add more languages as needed -->
+        </select>
+        <label for="real-time-preview">Enable Real-Time Preview:</label>
+        <input type="checkbox" id="real-time-preview" onchange="toggleRealTimePreview(this.checked)">
+        <label for="snap-to-grid">Enable Snap-to-Grid:</label>
+        <input type="checkbox" id="snap-to-grid" onchange="toggleSnapToGrid(this.checked)">
+        <label for="two-factor-auth">Enable Two-Factor Authentication:</label>
+        <input type="checkbox" id="two-factor-auth" onchange="toggleTwoFactorAuth(this.checked)">
+        <label for="ddos-protection">Enable DDoS Protection:</label>
+        <input type="checkbox" id="ddos-protection" onchange="toggleDdosProtection(this.checked)">
+        <label for="auto-update">Enable Auto-Update for Published Games:</label>
+        <input type="checkbox" id="auto-update" onchange="toggleAutoUpdate(this.checked)">
+        <label for="monetization">Enable Game Monetization:</label>
+        <input type="checkbox" id="monetization" onchange="toggleMonetization(this.checked)">
+        <button onclick="addLayer()">Add Layer</button>
+        <button onclick="removeLayer()">Remove Layer</button>
+        <button onclick="loginWithGoogle()">Login with Google</button>
+        <button onclick="loginWithFacebook()">Login with Facebook</button>
+        <button onclick="loginWithGitHub()">Login with GitHub</button>
+        <button onclick="startTutorial()">Start Tutorial</button>
+        <button onclick="generateAIGraphics('background')">Generate AI Background</button>
+        <button onclick="generateAIGraphics('sprite')">Generate AI Sprite</button>
+        <label for="feedback">Submit Feedback:</label>
+        <textarea id="feedback" rows="4" cols="50"></textarea>
+        <button onclick="submitFeedback({ text: document.getElementById('feedback').value })">Submit</button>
+    </div>
+    <script>
+        function togglePopup() {
+            const popupContent = document.getElementById('popup-content');
+            if (popupContent.classList.contains('show')) {
+                popupContent.classList.remove('show');
+                popupContent.classList.add('hide');
+                setTimeout(() => {
+                    popupContent.style.display = 'none';
+                }, 300);
+            } else {
+                popupContent.style.display = 'block';
+                setTimeout(() => {
+                    popupContent.classList.remove('hide');
+                    popupContent.classList.add('show');
+                }, 10);
+            }
+        }
+    </script>
+</body>
+</html>

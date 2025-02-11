@@ -1,0 +1,275 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color, #f0f0f0);
+    transition: background-color 0.3s ease;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--header-background-color, #333);
+    color: var(--header-text-color, #fff);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#hero {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--hero-background-color, #fff);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#templates {
+    padding: 2rem;
+}
+
+.template-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+#preview-canvas {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+}
+
+#ui-preview {
+    padding: 1rem;
+    border: 1px solid #ccc;
+    margin-top: 1rem;
+}
+
+#export, #user-profile {
+    padding: 2rem;
+    background-color: var(--section-background-color, #fff);
+    margin-top: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#user-profile ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Glassmorphism effect */
+.glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Neumorphism effect */
+.neumorphism {
+    background: var(--background-color, #f0f0f0);
+    border-radius: 10px;
+    box-shadow: 7px 7px 15px rgba(0, 0, 0, 0.1), -7px -7px 15px rgba(255, 255, 255, 0.7);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.neumorphism:active {
+    box-shadow: inset 7px 7px 15px rgba(0, 0, 0, 0.1), inset -7px -7px 15px rgba(255, 255, 255, 0.7);
+}
+
+/* Dark mode */
+body.dark-mode {
+    --background-color: #121212;
+    --header-background-color: #1e1e1e;
+    --header-text-color: #e0e0e0;
+    --hero-background-color: #1e1e1e;
+    --section-background-color: #1e1e1e;
+}
+
+/* Page transitions */
+.page-transition {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.page-transition-active {
+    opacity: 1;
+}
+
+/* Drag-and-drop styles */
+#game-canvas.drag-over {
+    border: 2px dashed #000;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* AI-powered UI generator styles */
+#ai-ui-generator {
+    padding: 2rem;
+    background-color: var(--section-background-color, #fff);
+    margin-top: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#ui-description-input {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+}
+
+#ui-preview-container {
+    margin-top: 1rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    overflow-x: auto;
+}
+
+/* AI-powered music generator styles */
+#ai-music-generator {
+    padding: 2rem;
+    background-color: var(--section-background-color, #fff);
+    margin-top: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#music-style-select,
+#tempo-input,
+#instruments-input,
+#mood-input {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#music-preview-container {
+    margin-top: 1rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    overflow-x: auto;
+}
+
+/* AI-powered game builder styles */
+#ai-game-builder {
+    padding: 2rem;
+    background-color: var(--section-background-color, #fff);
+    margin-top: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#game-description-input {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+}
+
+#game-preview-container {
+    margin-top: 1rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    overflow-x: auto;
+}
+
+/* AI chatbot assistant styles */
+#chatbot-assistant {
+    padding: 2rem;
+    background-color: var(--section-background-color, #fff);
+    margin-top: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#chatbot-messages {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+#chatbot-input {
+    width: calc(100% - 100px);
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+#chatbot-send-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+#chatbot-send-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Debug log styles */
+#debug-log {
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-height: 200px;
+    overflow-y: auto;
+    margin-top: 1rem;
+}
+
+.log-entry {
+    padding: 0.5rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.log-entry.info {
+    background-color: #e7f3fe;
+    color: #31708f;
+}
+
+.log-entry.error {
+    background-color: #f2dede;
+    color: #a94442;
+}

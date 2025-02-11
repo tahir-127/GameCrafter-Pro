@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Game Builder</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dark-mode.css">
+    <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body class="page-transition page-transition-active">
+    <header>
+        <h1>AI Game Builder</h1>
+        <button id="login-btn">Login</button>
+    </header>
+    <main>
+        <section id="ai-game-builder" class="glass">
+            <h2>Generate Your Game Prototype</h2>
+            <p>Describe your game concept, and our AI will assist in creating a functional prototype for you.</p>
+            <textarea id="game-description-input" placeholder="Describe your game concept..." rows="5" class="neumorphism"></textarea>
+            <button id="generate-game-btn" class="neumorphism">Generate Game</button>
+            <div id="game-preview-container"></div>
+        </section>
+    </main>
+    <script src="../js/auth.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

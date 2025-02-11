@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Music Generator</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dark-mode.css">
+    <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body class="page-transition page-transition-active">
+    <header>
+        <h1>AI Music Generator</h1>
+        <button id="login-btn">Login</button>
+    </header>
+    <main>
+        <section id="ai-music-generator" class="glass">
+            <h2>Generate Custom Background Music</h2>
+            <p>Select a music style, and fine-tune the tempo, instruments, and mood to generate a custom soundtrack for your game.</p>
+            <label for="music-style-select">Music Style:</label>
+            <select id="music-style-select" class="neumorphism">
+                <option value="retro">Retro</option>
+                <option value="techno">Techno</option>
+                <option value="classical">Classical</option>
+                <!-- Add more styles as needed -->
+            </select>
+            <label for="tempo-input">Tempo (BPM):</label>
+            <input type="number" id="tempo-input" value="120" class="neumorphism">
+            <label for="instruments-input">Instruments:</label>
+            <input type="text" id="instruments-input" placeholder="e.g., piano, drums" class="neumorphism">
+            <label for="mood-input">Mood:</label>
+            <input type="text" id="mood-input" placeholder="e.g., happy, sad" class="neumorphism">
+            <button id="generate-music-btn" class="neumorphism">Generate Music</button>
+            <div id="music-preview-container"></div>
+        </section>
+    </main>
+    <script src="../js/auth.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

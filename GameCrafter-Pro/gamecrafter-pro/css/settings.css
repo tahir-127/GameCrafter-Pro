@@ -1,0 +1,28 @@
+
+#global-leaderboard, #local-leaderboard {
+    list-style-type: none;
+    padding: 0;
+}
+
+#global-leaderboard li, #local-leaderboard li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+#global-leaderboard li:nth-child(even), #local-leaderboard li:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+body {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.light-mode {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+body.dark-mode {
+    background-color: #000000;
+    color: #ffffff;
+}

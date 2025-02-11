@@ -1,0 +1,53 @@
+<!-- ...existing code... -->
+<div class="chatbot-container">
+    <div class="chatbot-header">AI Chatbot Assistant</div>
+    <div class="chatbot-messages" id="chatbot-messages"></div>
+    <div class="chatbot-input">
+        <input type="text" id="text-input" placeholder="Type your message...">
+        <input type="file" id="voice-input" accept="audio/*" style="display: none;">
+        <button onclick="document.getElementById('voice-input').click();">Voice Input</button>
+    </div>
+</div>
+<!-- ...existing code... -->
+<section id="subscription" class="glass">
+    <h2>Subscription</h2>
+    <button id="subscribe-btn" class="neumorphism">Subscribe to Premium</button>
+</section>
+<section id="ai-ui-generator" class="glass premium-feature">
+    <h2>AI-Powered UI Generator</h2>
+    <textarea id="ui-description-input" placeholder="Describe your game UI..."></textarea>
+    <button id="generate-ui-btn" class="neumorphism">Generate UI</button>
+    <div id="ui-preview-container"></div>
+</section>
+<section id="ai-music-generator" class="glass premium-feature">
+    <h2>AI Music Generator</h2>
+    <select id="music-style-select">
+        <option value="classical">Classical</option>
+        <option value="rock">Rock</option>
+        <option value="jazz">Jazz</option>
+    </select>
+    <input type="number" id="tempo-input" placeholder="Tempo">
+    <input type="text" id="instruments-input" placeholder="Instruments">
+    <input type="text" id="mood-input" placeholder="Mood">
+    <button id="generate-music-btn" class="neumorphism">Generate Music</button>
+    <div id="music-preview-container"></div>
+</section>
+<section id="ai-game-builder" class="glass premium-feature">
+    <h2>AI Game Builder</h2>
+    <textarea id="game-description-input" placeholder="Describe your game..."></textarea>
+    <button id="generate-game-btn" class="neumorphism">Generate Game</button>
+    <div id="game-preview-container"></div>
+</section>
+<section id="ai-debugging" class="glass premium-feature">
+    <h2>Advanced AI Debugging</h2>
+    <div id="debug-log"></div>
+</section>
+<section id="premium-support" class="glass premium-feature">
+    <h2>Premium Support</h2>
+    <div id="chatbot-messages"></div>
+    <input type="text" id="chatbot-input" placeholder="Ask me anything...">
+    <button id="chatbot-send-btn" class="neumorphism">Send</button>
+</section>
+<link rel="stylesheet" href="../css/chatbot.css">
+<script src="../js/chatbot.js"></script>
+<script src="../js/subscription.js"></script>

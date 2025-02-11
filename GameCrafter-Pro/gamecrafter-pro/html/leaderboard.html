@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="../css/leaderboard.css">
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+    <script src="../js/leaderboard.js" defer></script>
+</head>
+<body>
+    <h1>Global Leaderboard</h1>
+    <ul id="global-leaderboard"></ul>
+
+    <h1>Local Leaderboard</h1>
+    <ul id="local-leaderboard"></ul>
+
+    <h1>Embed Game</h1>
+    <input type="text" id="game-id" placeholder="Enter Game ID">
+    <button onclick="generateEmbedCode()">Generate Embed Code</button>
+    <pre id="embed-code"></pre>
+    <script>
+        function generateEmbedCode() {
+            const gameId = document.getElementById('game-id').value;
+            const embedCode = `<iframe src="https://yourgameplatform.com/games/${gameId}" width="800" height="600"></iframe>`;
+            document.getElementById('embed-code').textContent = embedCode;
+        }
+    </script>
+</body>
+</html>
