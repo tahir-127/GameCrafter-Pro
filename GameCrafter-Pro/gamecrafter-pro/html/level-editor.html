@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Level Editor</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/level-editor.css">
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-storage.js"></script>
+    <script src="../js/level-editor.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>AI-Powered Level Editor</h1>
+    </header>
+    <main>
+        <section id="level-editor" class="glass">
+            <h2>Design Your Level</h2>
+            <div id="editor-container">
+                <div id="toolbox">
+                    <h3>Tools</h3>
+                    <button id="add-obstacle-btn" class="neumorphism">Add Obstacle</button>
+                    <button id="add-challenge-btn" class="neumorphism">Add Challenge</button>
+                    <button id="add-reward-btn" class="neumorphism">Add Reward</button>
+                    <button id="undo-btn" class="neumorphism">Undo</button>
+                    <button id="delete-element-btn" class="neumorphism">Delete Last Element</button>
+                    <button id="save-level-btn" class="neumorphism">Save Level</button>
+                </div>
+                <div id="level-preview" class="neumorphism">
+                    <canvas id="level-canvas"></canvas>
+                </div>
+            </div>
+            <div id="difficulty-level" class="neumorphism">Current Difficulty: Normal</div>
+        </section>
+    </main>
+    <script>
+        // Initialize Firebase
+        var firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+        firebase.initializeApp(firebaseConfig);
+
+        // Level editor functionality
+        const canvas = document.getElementById('level-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = 800;
+        canvas.height = 600;
+
+        document.getElementById('add-obstacle-btn').addEventListener('click', () => {
+            addElementToLevel('obstacle');
+        });
+
+        document.getElementById('add-challenge-btn').addEventListener('click', () => {
+            addElementToLevel('challenge');
+        });
+
+        document.getElementById('add-reward-btn').addEventListener('click', () => {
+            addElementToLevel('reward');
+        });
+
+        document.getElementById('undo-btn').addEventListener('click', () => {
+            undoAction();
+        });
+
+        document.getElementById('delete-element-btn').addEventListener('click', () => {
+            deleteLastElement();
+        });
+
+        document.getElementById('save-level-btn').addEventListener('click', () => {
+            saveLevel();
+        });
+
+        let elements = [];
+
+        function addElementToLevel(type) {
+            const element = {
+                type: type,
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height
+            };
+            elements.push(element);
+            drawElement(element);
+        }
+
+        function drawElement(element) {
+            switch (element.type) {
+                case 'obstacle':
+                    ctx.fillStyle = 'red';
+                    ctx.fillRect(element.x, element.y, 50, 50);
+                    break;
+                case 'challenge':
+                    ctx.fillStyle = 'blue';
+                    ctx.fillRect(element.x, element.y, 50, 50);
+                    break;
+                case 'reward':
+                    ctx.fillStyle = 'green';
+                    ctx.fillRect(element.x, element.y, 50, 50);
+                    break;
+                default:
+                    console.error('Unknown element type:', element.type);
+            }
+        }
+
+        function undoAction() {
+            elements.pop();
+            redrawCanvas();
+        }
+
+        function deleteLastElement() {
+            elements.pop();
+            redrawCanvas();
+        }
+
+        function redrawCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            elements.forEach(element => drawElement(element));
+        }
+
+        function saveLevel() {
+            // Implement save functionality here
+            console.log('Level saved');
+        }
+
+        function increaseDifficulty() {
+            console.log('Difficulty increased based on level elements');
+            document.getElementById('difficulty-level').textContent = 'Current Difficulty: Hard';
+            // Implement difficulty increase logic
+            // ...implementation...
+        }
+
+        function decreaseDifficulty() {
+            console.log('Difficulty decreased based on level elements');
+            document.getElementById('difficulty-level').textContent = 'Current Difficulty: Easy';
+            // Implement difficulty decrease logic
+            // ...implementation...
+        }
+    </script>
+</body>
+</html>

@@ -4,29 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leaderboard</title>
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/leaderboard.css">
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-storage.js"></script>
     <script src="../js/leaderboard.js" defer></script>
 </head>
 <body>
-    <h1>Global Leaderboard</h1>
-    <ul id="global-leaderboard"></ul>
-
-    <h1>Local Leaderboard</h1>
-    <ul id="local-leaderboard"></ul>
-
-    <h1>Embed Game</h1>
-    <input type="text" id="game-id" placeholder="Enter Game ID">
-    <button onclick="generateEmbedCode()">Generate Embed Code</button>
-    <pre id="embed-code"></pre>
+    <header>
+        <h1>Global Leaderboard</h1>
+    </header>
+    <main>
+        <section id="global-leaderboard" class="glass">
+            <h2>Global Leaderboard</h2>
+            <ul id="global-leaderboard-list"></ul>
+        </section>
+        <section id="local-leaderboard" class="glass">
+            <h2>Local Leaderboard</h2>
+            <ul id="local-leaderboard-list"></ul>
+        </section>
+        <section id="embed-game" class="glass">
+            <h2>Embed Game</h2>
+            <input type="text" id="game-id" placeholder="Enter Game ID" class="neumorphism">
+            <button onclick="generateEmbedCode()" class="neumorphism">Generate Embed Code</button>
+            <pre id="embed-code" class="neumorphism"></pre>
+        </section>
+        <section id="asset-upload" class="glass">
+            <h2>Upload Assets</h2>
+            <input type="file" id="asset-file" class="neumorphism">
+            <button onclick="uploadAsset()" class="neumorphism">Upload Asset</button>
+            <ul id="asset-list"></ul>
+        </section>
+    </main>
     <script>
         function generateEmbedCode() {
             const gameId = document.getElementById('game-id').value;
             const embedCode = `<iframe src="https://yourgameplatform.com/games/${gameId}" width="800" height="600"></iframe>`;
             document.getElementById('embed-code').textContent = embedCode;
         }
+
+        // Initialize Firebase
+        var firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const storage = firebase.storage();
+
+        function uploadAsset() {
+            const file = document.getElementById('asset-file').files[0];
+            const storageRef = storage.ref('assets/' + file.name);
+            storageRef.put(file).then(() => {
+                alert('Asset uploaded successfully!');
+                listAssets();
+            });
+        }
+
+        function listAssets() {
+            const assetList = document.getElementById('asset-list');
+            assetList.innerHTML = '';
+            storage.ref('assets').listAll().then((result) => {
+                result.items.forEach((itemRef) => {
+                    itemRef.getDownloadURL().then((url) => {
+                        const li = document.createElement('li');
+                        li.textContent = url;
+                        assetList.appendChild(li);
+                    });
+                });
+            });
+        }
+
+        // Call listAssets on page load to display existing assets
+        window.onload = listAssets;
     </script>
 </body>
 </html>

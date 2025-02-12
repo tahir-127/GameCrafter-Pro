@@ -1,0 +1,47 @@
+#editor-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+}
+
+#toolbox {
+    width: 20%;
+    background-color: var(--section-background-color, #fff);
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#level-preview {
+    width: 75%;
+    background-color: var(--section-background-color, #fff);
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#level-canvas {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+}
+
+#save-level-btn,
+#undo-btn,
+#delete-element-btn {
+    margin-top: 1rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#save-level-btn:hover,
+#undo-btn:hover,
+#delete-element-btn:hover {
+    background-color: #0056b3;
+}

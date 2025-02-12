@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Manager</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/fileManager.css">
+</head>
+<body>
+    <header>
+        <h1>File Manager</h1>
+    </header>
+    <main>
+        <section id="file-upload" class="glass">
+            <h2>Upload Files</h2>
+            <input type="file" id="asset-upload-input" multiple>
+            <div id="uploaded-assets"></div>
+        </section>
+        <section id="asset-categories" class="glass">
+            <h2>Assets</h2>
+            <div id="images" class="asset-category">
+                <h3>Images</h3>
+                <div class="asset-list" id="image-assets"></div>
+            </div>
+            <div id="sounds" class="asset-category">
+                <h3>Sounds</h3>
+                <div class="asset-list" id="sound-assets"></div>
+            </div>
+            <div id="videos" class="asset-category">
+                <h3>Videos</h3>
+                <div class="asset-list" id="video-assets"></div>
+            </div>
+        </section>
+    </main>
+    <script src="../js/auth.js"></script>
+    <script src="../js/fileManager.js"></script>
+</body>
+</html>

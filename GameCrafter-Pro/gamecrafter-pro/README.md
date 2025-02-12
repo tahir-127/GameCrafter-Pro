@@ -15,6 +15,7 @@ GameCrafter Pro is a no-code game builder that allows users to create, customize
 - **AI music generator for custom background music**
 - **AI-powered game builder for creating functional prototypes**
 - **AI chatbot assistant for real-time guidance**
+- **AI-powered sound effects generator for custom sound effects**
 
 ## Setup
 1. Clone the repository.
@@ -32,3 +33,4 @@ GameCrafter Pro is a no-code game builder that allows users to create, customize
 - Use the AI music generator to create custom background music for your game.
 - Use the AI-powered game builder to create functional game prototypes by describing your game concept.
 - Use the AI chatbot assistant for real-time guidance and personalized game development tips.
+- Use the AI-powered sound effects generator to create custom sound effects for your game.

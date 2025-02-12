@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameCrafter Pro</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dark-mode.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/notifications.css">
+    <link rel="stylesheet" href="../css/ui-template.css">
+    <link rel="stylesheet" href="../css/music-adapter.css">
+    <link rel="stylesheet" href="../css/sound-effects.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <!-- AdSense script -->
+    <script data-ad-client="YOUR_ADSENSE_CLIENT_ID" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+<body class="page-transition page-transition-active">
+    <header>
+        <h1>GameCrafter Pro</h1>
+        <button id="login-btn" class="neumorphism">Login</button>
+        <button id="dark-mode-toggle">Toggle Dark Mode</button>
+    </header>
+    <nav>
+        <ul>
+            <!-- ...existing code... -->
+            <li><a href="#ai-ui-generator">AI UI Generator</a></li>
+            <li><a href="ai-ui-generator.html">AI UI Generator</a></li>
+            <li><a href="ai-music-generator.html">AI Music Generator</a></li>
+            <li><a href="ai-game-builder.html">AI Game Builder</a></li>
+            <li><a href="game-builder.html">Game Builder</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="hero" class="glass">
+            <h2>Create Your Own Game</h2>
+            <button id="create-game-btn" class="neumorphism">Create Game</button>
+        </section>
+        <section id="templates" class="glass">
+            <h2>Game Templates</h2>
+            <div class="template-grid">
+                <!-- Pre-made game templates will be showcased here -->
+                <img data-src="path/to/template1.jpg" alt="Template 1">
+                <img data-src="path/to/template2.jpg" alt="Template 2">
+            </div>
+        </section>
+        <!-- AdSense ad unit -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="YOUR_ADSENSE_CLIENT_ID"
+             data-ad-slot="YOUR_AD_SLOT_ID"
+             data-ad-format="auto"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        <section id="export" class="glass">
+            <h2>Export Your Game</h2>
+            <button id="export-html-btn" class="neumorphism">Export as HTML5</button>
+            <button id="export-apk-btn" class="neumorphism">Generate APK Package</button>
+        </section>
+        <section id="user-profile" class="glass">
+            <h2>User Profile</h2>
+            <div id="profile-info"></div>
+            <h3>Game History</h3>
+            <ul id="game-history"></ul>
+        </section>
+        <section id="theme-customization" class="glass">
+            <h2>Customize Theme</h2>
+            <label for="background-color">Background Color:</label>
+            <input type="color" id="background-color">
+            <label for="header-background-color">Header Background Color:</label>
+            <input type="color" id="header-background-color">
+            <label for="header-text-color">Header Text Color:</label>
+            <input type="color" id="header-text-color">
+            <label for="hero-background-color">Hero Background Color:</label>
+            <input type="color" id="hero-background-color">
+            <label for="section-background-color">Section Background Color:</label>
+            <input type="color" id="section-background-color">
+            <button id="save-theme-btn" class="neumorphism">Save Theme</button>
+        </section>
+        <section id="game-editor-tools" class="glass">
+            <h2>Game Editor Tools</h2>
+            <label for="game-type-select">Select Game Type:</label>
+            <select id="game-type-select" class="neumorphism">
+                <option value="platformer">Platformer</option>
+                <option value="puzzle">Puzzle</option>
+                <option value="trivia">Trivia</option>
+                <option value="quiz">Quiz</option>
+                <option value="endless-runner">Endless Runner</option>
+                <option value="tic-tac-toe">Tic-Tac-Toe</option>
+                <option value="rpg">RPG</option>
+                <option value="strategy">Strategy</option>
+            </select>
+            <label for="difficulty-select">Select Difficulty:</label>
+            <select id="difficulty-select" class="neumorphism">
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+            <label for="ui-template-select">Select UI Template:</label>
+            <select id="ui-template-select" class="neumorphism">
+                <option value="template1">Template 1</option>
+                <option value="template2">Template 2</option>
+                <option value="template3">Template 3</option>
+            </select>
+            <button id="generate-game-btn" class="neumorphism">Generate Game</button>
+            <button id="add-layer-btn" class="neumorphism">Add Layer</button>
+            <button id="remove-layer-btn" class="neumorphism">Remove Layer</button>
+            <button onclick="generateGameSuggestions()" class="neumorphism">Generate Game Suggestions</button>
+            <button onclick="openLogicFlowEditor()" class="neumorphism">Open Logic Flow Editor</button>
+            <button onclick="addAIBot()" class="neumorphism">Add AI Bot</button>
+            <button onclick="autoBalanceDifficulty()" class="neumorphism">Auto-Balance Difficulty</button>
+        </section>
+        <section id="generated-game-preview" class="glass">
+            <h2>Generated Game Preview</h2>
+            <div id="generated-game-preview-content"></div>
+        </section>
+        <section id="real-time-chat" class="glass">
+            <h2>Real-Time Chat</h2>
+            <div id="chat-messages"></div>
+            <input type="text" id="chat-input" placeholder="Type a message...">
+            <button id="send-chat-btn" class="neumorphism">Send</button>
+        </section>
+        <section id="multiplayer" class="glass">
+            <h2>Multiplayer</h2>
+            <button onclick="initializeTurnBasedMultiplayer()" class="neumorphism">Start Turn-Based Game</button>
+            <button onclick="enableSpectatorMode()" class="neumorphism">Enable Spectator Mode</button>
+        </section>
+        <section id="game-sharing-hub" class="glass">
+            <h2>Game Sharing Hub</h2>
+            <div id="shared-games"></div>
+            <button onclick="initializeGameSharingHub()" class="neumorphism">Share Your Game</button>
+        </section>
+        <section id="voice-chat" class="glass">
+            <h2>Voice Chat</h2>
+            <button onclick="initializeVoiceChat()" class="neumorphism">Start Voice Chat</button>
+        </section>
+        <section id="asset-manager" class="glass">
+            <h2>Asset Manager</h2>
+            <input type="file" id="asset-upload-input" multiple>
+            <div id="uploaded-assets"></div>
+        </section>
+        <section id="sound-library" class="glass">
+            <h2>Sound Library</h2>
+            <div id="sound-library-list"></div>
+        </section>
+        <section id="cloud-storage" class="glass">
+            <h2>Cloud Storage</h2>
+            <button onclick="integrateCloudStorage()" class="neumorphism">Integrate Cloud Storage</button>
+        </section>
+        <section id="leaderboard" class="glass">
+            <h2>Leaderboard</h2>
+            <div id="leaderboard-list"></div>
+        </section>
+        <section id="social-media-sharing" class="glass">
+            <h2>Share Your Game</h2>
+            <button id="share-facebook-btn" class="neumorphism">Share on Facebook</button>
+            <button id="share-twitter-btn" class="neumorphism">Share on Twitter</button>
+        </section>
+        <section id="community-voting" class="glass">
+            <h2>Community Voting</h2>
+            <div id="voting-list"></div>
+            <button onclick="initializeCommunityVoting()" class="neumorphism">Vote for Games</button>
+        </section>
+        <section id="user-profiles" class="glass">
+            <h2>User Profiles</h2>
+            <div id="profile-list"></div>
+            <button onclick="initializeUserProfiles()" class="neumorphism">View Profiles</button>
+        </section>
+        <section id="follow-message" class="glass">
+            <h2>Follow & Message</h2>
+            <button onclick="initializeFollowAndMessage()" class="neumorphism">Follow & Message</button>
+        </section>
+        <section id="ai-ui-generator" class="glass">
+            <h2>AI-Powered UI Generator</h2>
+            <textarea id="ui-description-input" placeholder="Describe your game UI..."></textarea>
+            <button id="generate-ui-btn" class="neumorphism">Generate UI</button>
+            <div id="ui-preview-container"></div>
+        </section>
+        <section id="ai-music-generator" class="glass">
+            <h2>AI-Powered Music Generator</h2>
+            <label for="music-style-select">Select Music Style:</label>
+            <select id="music-style-select" class="neumorphism">
+                <option value="ambient">Ambient</option>
+                <option value="action">Action</option>
+                <option value="puzzle">Puzzle</option>
+            </select>
+            <label for="tempo-input">Tempo (BPM):</label>
+            <input type="number" id="tempo-input" class="neumorphism" min="60" max="180" value="120">
+            <label for="instruments-input">Instruments:</label>
+            <input type="text" id="instruments-input" class="neumorphism" placeholder="e.g., piano, drums">
+            <label for="mood-input">Mood:</label>
+            <input type="text" id="mood-input" class="neumorphism" placeholder="e.g., happy, tense">
+            <button id="generate-music-btn" class="neumorphism">Generate Music</button>
+            <div id="music-preview-container"></div>
+        </section>
+        <section id="ai-sound-effects-generator" class="glass">
+            <h2>AI-Powered Sound Effects Generator</h2>
+            <label for="sound-effect-select">Select Sound Effect:</label>
+            <select id="sound-effect-select" class="neumorphism">
+                <option value="button-click">Button Click</option>
+                <option value="game-win">Game Win</option>
+                <option value="game-over">Game Over</option>
+                <option value="jump">Jump</option>
+                <option value="move">Move</option>
+            </select>
+            <label for="sound-effect-volume">Volume:</label>
+            <input type="range" id="sound-effect-volume" class="neumorphism" min="0" max="1" step="0.1" value="0.5">
+            <button id="generate-sound-effect-btn" class="neumorphism">Generate Sound Effect</button>
+            <div id="sound-effect-preview-container"></div>
+        </section>
+        <section id="debug-log" class="glass">
+            <h2>Debug Log</h2>
+            <div id="debug-log"></div>
+        </section>
+        <section id="chatbot-assistant" class="glass">
+            <h2>AI Chatbot Assistant</h2>
+            <div id="chatbot-messages"></div>
+            <input type="text" id="chatbot-input" placeholder="Ask me anything...">
+            <button id="chatbot-send-btn" class="neumorphism">Send</button>
+        </section>
+        <section id="monetization" class="glass">
+            <h2>Monetization</h2>
+            <div id="in-app-purchases">
+                <h3>In-App Purchases</h3>
+                <input type="text" id="purchase-item" placeholder="Item Name">
+                <input type="number" id="purchase-amount" placeholder="Amount">
+                <button id="purchase-btn" class="neumorphism">Purchase</button>
+            </div>
+            <div id="premium-templates">
+                <h3>Premium Templates</h3>
+                <div id="template-list"></div>
+                <button id="buy-template-btn" class="neumorphism">Buy Template</button>
+            </div>
+            <div id="subscription-plans">
+                <h3>Subscription Plans</h3>
+                <input type="text" id="subscription-plan" placeholder="Plan Name">
+                <input type="number" id="subscription-price" placeholder="Price">
+                <button id="subscribe-btn" class="neumorphism">Subscribe</button>
+            </div>
+        </section>
+    </main>
+    <div id="permission-dialog" class="permission-dialog">
+        <div class="dialog-content">
+            <h3>Allow access to your files?</h3>
+            <p>GameCrafter Pro needs access to your files to upload assets.</p>
+            <button id="allow-while-using-btn" class="dialog-btn">While using the app</button>
+            <button id="allow-once-btn" class="dialog-btn">Only this time</button>
+            <button id="deny-btn" class="dialog-btn">Don't allow</button>
+        </div>
+    </div>
+    <script src="../js/auth.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/debug.js"></script>
+    <script src="../js/security.js"></script> <!-- Add security script -->
+    <script src="../js/monetization.js"></script> <!-- Add monetization script -->
+    <script src="../js/index.js"></script> <!-- Include the new JavaScript file -->
+</body>
+</html>

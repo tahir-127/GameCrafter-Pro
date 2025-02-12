@@ -14,7 +14,15 @@
     <main>
         <canvas id="preview-canvas"></canvas>
         <div id="debug-log"></div>
+        <div id="sound-effect-preview-container"></div>
     </main>
     <script src="../js/debug.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        // Example usage of playSoundEffect function in preview
+        document.getElementById('preview-canvas').addEventListener('click', () => {
+            playSoundEffect('button-click');
+        });
+    </script>
 </body>
 </html>

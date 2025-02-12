@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Builder</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dark-mode.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/notifications.css">
+    <link rel="stylesheet" href="../css/ui-template.css">
+    <link rel="stylesheet" href="../css/music-adapter.css">
+    <link rel="stylesheet" href="../css/sound-effects.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body class="page-transition page-transition-active">
+    <header>
+        <h1>Game Builder</h1>
+        <button id="login-btn" class="neumorphism">Login</button>
+        <button id="dark-mode-toggle">Toggle Dark Mode</button>
+    </header>
+    <main>
+        <section id="game-builder-tools" class="glass">
+            <h2>Game Builder Tools</h2>
+            <label for="game-type-select">Select Game Type:</label>
+            <select id="game-type-select" class="neumorphism">
+                <option value="platformer">Platformer</option>
+                <option value="puzzle">Puzzle</option>
+                <option value="trivia">Trivia</option>
+                <option value="quiz">Quiz</option>
+                <option value="endless-runner">Endless Runner</option>
+                <option value="tic-tac-toe">Tic-Tac-Toe</option>
+                <option value="rpg">RPG</option>
+                <option value="strategy">Strategy</option>
+            </select>
+            <label for="difficulty-select">Select Difficulty:</label>
+            <select id="difficulty-select" class="neumorphism">
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+            <label for="ui-template-select">Select UI Template:</label>
+            <select id="ui-template-select" class="neumorphism">
+                <option value="template1">Template 1</option>
+                <option value="template2">Template 2</option>
+                <option value="template3">Template 3</option>
+            </select>
+            <button id="generate-game-btn" class="neumorphism">Generate Game</button>
+            <button id="add-layer-btn" class="neumorphism">Add Layer</button>
+            <button id="remove-layer-btn" class="neumorphism">Remove Layer</button>
+            <button onclick="generateGameSuggestions()" class="neumorphism">Generate Game Suggestions</button>
+            <button onclick="openLogicFlowEditor()" class="neumorphism">Open Logic Flow Editor</button>
+            <button onclick="addAIBot()" class="neumorphism">Add AI Bot</button>
+            <button onclick="autoBalanceDifficulty()" class="neumorphism">Auto-Balance Difficulty</button>
+        </section>
+        <section id="generated-game-preview" class="glass">
+            <h2>Generated Game Preview</h2>
+            <div id="generated-game-preview-content"></div>
+        </section>
+    </main>
+    <script src="../js/auth.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/debug.js"></script>
+    <script src="../js/security.js"></script>
+    <script src="../js/monetization.js"></script>
+    <script src="../js/game-builder.js"></script> <!-- Include the new JavaScript file -->
+</body>
+</html>

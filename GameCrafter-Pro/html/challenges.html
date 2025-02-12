@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenges</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/challenges.css">
+</head>
+<body>
+    <header>
+        <h1>Challenges</h1>
+    </header>
+    <main>
+        <section id="create-challenge" class="glass">
+            <h2>Create a Challenge</h2>
+            <input type="text" id="challenge-title" placeholder="Challenge Title">
+            <textarea id="challenge-description" placeholder="Challenge Description"></textarea>
+            <select id="challenge-type">
+                <option value="level">Level</option>
+                <option value="time-trial">Time Trial</option>
+                <option value="scoring">Scoring</option>
+            </select>
+            <button id="create-challenge-btn" class="neumorphism">Create Challenge</button>
+        </section>
+        <section id="share-challenge" class="glass">
+            <h2>Share a Challenge</h2>
+            <input type="text" id="challenge-id" placeholder="Challenge ID">
+            <button id="share-challenge-btn" class="neumorphism">Share Challenge</button>
+        </section>
+        <section id="rate-challenge" class="glass">
+            <h2>Rate a Challenge</h2>
+            <input type="text" id="challenge-id" placeholder="Challenge ID">
+            <input type="number" id="challenge-rating" placeholder="Rating (1-5)" min="1" max="5">
+            <button id="rate-challenge-btn" class="neumorphism">Rate Challenge</button>
+        </section>
+        <section id="challenge-list" class="glass">
+            <h2>Challenge List</h2>
+            <div id="challenges"></div>
+        </section>
+    </main>
+    <script src="../js/auth.js"></script>
+    <script src="../js/challenges.js"></script>
+</body>
+</html>
